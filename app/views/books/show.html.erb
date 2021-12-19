@@ -63,6 +63,7 @@
           <% end %>
         </tbody>
       </table>
+      <%= render 'layouts/errors', obj: @post_comment %>
       <%= form_with model:[@book, @post_comment], local:true do |f| %>
         <div class="form-group">
           <%= f.text_area :comment,  class: 'form-control', rows: 5%>
