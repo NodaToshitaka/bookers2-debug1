@@ -1,6 +1,7 @@
-
+<div class="container">
 <% if @range == "User" %>
   <h1>Users sesrch for "<%= @word %>"</h1>
+  <% if @users.present? %>
   <table class="table">
     <thead>
       <tr>
@@ -21,8 +22,12 @@
       <% end %>
     </tbody>
   </table>
+  <% else %>
+    <p>"<%= @word %>"に関するUserは見つかりませんでした</p>
+  <% end %>
 <% else %>
   <h1>Books sesrch for "<%= @word %>"</h1>
+  <% if @books.present? %>
   <table class="table">
     <thead>
       <tr>
@@ -41,4 +46,9 @@
       <% end %>
     </tbody>
   </table>
+  <% else %>
+    <p>"<%= @word %>"に関するBookは見つかりませんでした</p>
+  <% end %>
+
 <% end %>
+</div>
