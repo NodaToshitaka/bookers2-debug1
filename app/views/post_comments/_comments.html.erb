@@ -1,0 +1,26 @@
+    <% if book.post_comments.present? %>
+      <table class="table">
+        <tbody>
+          <% book.post_comments.each do |post_comment| %>
+          <tr>
+            <td>
+              <%= attachment_image_tag(post_comment.user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %>
+              <%= link_to post_comment.user.name, user_path(post_comment.user) %>
+            </td>
+            <td>
+              <%= post_comment.comment %>
+            </td>
+            <% if post_comment.user == current_user %>
+            <td>
+              <%= link_to book_post_comment_path(post_comment.book, post_comment), method: :delete, remote: true do %>
+                <button class="btn btn-sm btn-danger destroy_book_#{@book.id}">Destroy</button>
+              <% end %>
+            </td>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p>コメントはまだありません</p>
+    <% end %>

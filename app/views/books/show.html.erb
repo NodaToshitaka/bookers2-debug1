@@ -41,35 +41,12 @@
           <% end %>
         </tr>
       </table>
-      <table class="table">
-        <tbody>
-          <% @book.post_comments.each do |post_comment| %>
-          <tr>
-            <td>
-              <%= attachment_image_tag(post_comment.user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %>
-              <%= link_to post_comment.user.name, user_path(post_comment.user) %>
-            </td>
-            <td>
-              <%= post_comment.comment %>
-            </td>
-            <% if post_comment.user == current_user %>
-            <td>
-              <%= link_to book_post_comment_path(post_comment.book, post_comment), method: :delete do %>
-                <button class="btn btn-sm btn-danger destroy_book_#{@book.id}">Destroy</button>
-              <% end %>
-            </td>
-            <% end %>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <%= render 'layouts/errors', obj: @post_comment %>
-      <%= form_with model:[@book, @post_comment], local:true do |f| %>
-        <div class="form-group">
-          <%= f.text_area :comment,  class: 'form-control', rows: 5%>
-        </div>
-        <%= f.submit "送信" %>
-      <% end %>
+      <div id="comments_index">
+        <%= render 'post_comments/comments', book: @book %>
+      </div>
+      <div>
+        <%= render 'post_comments/form', book: @book, post_comment: @post_comment %>
+      </div>
 
     </div>
   </div>

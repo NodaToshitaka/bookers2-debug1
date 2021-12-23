@@ -1,0 +1,9 @@
+<%= form_with model:[book, post_comment] do |f| %>
+  <div id="comments_error">
+    <%= render 'layouts/errors', obj: f.object %>
+  </div>
+  <div class="form-group">
+    <%= f.text_area :comment,  class: 'form-control', rows: 5%>
+  </div>
+  <%= f.submit "送信" %>
+<% end %>
