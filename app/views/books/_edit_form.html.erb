@@ -7,9 +7,8 @@
     <%= f.label :opinion %>
     <%= f.text_area :body, class: 'form-control book_body' %>
   </div>
-  <div class="form-group" id="star">
-    <label>評価：</label>
-    <%= f.hidden_field :rate, id: :review_star %>
+  <div class="form-group">
+    <%= render 'books/star', book: book %>
   </div>
   <div class="form-group">
     <%= f.submit class: 'btn btn-success' %>
