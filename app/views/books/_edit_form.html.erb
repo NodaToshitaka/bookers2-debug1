@@ -8,6 +8,10 @@
     <%= f.text_area :body, class: 'form-control book_body' %>
   </div>
   <div class="form-group">
+    <%= f.label :tag_name %>
+    <%= f.text_field :tag_name, placeholder:",で区切ってください" %>
+  </div>
+  <div class="form-group">
     <%= render 'books/star', book: book %>
   </div>
   <div class="form-group">

@@ -2,6 +2,8 @@ class Book < ApplicationRecord
 	belongs_to :user
 	has_many :favorites, dependent: :destroy
 	has_many :post_comments, dependent: :destroy
+	has_many :book_tags, dependent: :destroy
+	has_many :tags, through: :book_tags
 
 	def favorited_by?(user)
 		favorites.where(user_id: user.id).exists?
@@ -40,5 +42,18 @@ class Book < ApplicationRecord
     when 'dislike'
       return Book.all.order(rate: :ASC)
     end
+  end
+
+  def tags_save(tag_list)
+    if self.tags != nil
+      book_tags_records = BookTag.where(book_id: self.id)
+      book_tags_records.destroy_all
+    end
+
+    tag_list.each do |tag|
+      inspected_tag = Tag.where(tag_name: tag).first_or_create
+      self.tags << inspected_tag
+    end
+
   end
 end
