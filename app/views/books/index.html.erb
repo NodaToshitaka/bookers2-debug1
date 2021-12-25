@@ -8,8 +8,11 @@
       <%= render 'form', book: @book %>
     </div>
     <div class='col-md-8 offset-md-1'>
+      <%= render 'alines/aline' %>
       <h2>Books</h2>
+      <div id="aline_books">
       <%= render 'index', books: @books%>
+      </div>
     </div>
   </div>
 </div>
