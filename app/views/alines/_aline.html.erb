@@ -1,0 +1,4 @@
+<%= form_with url: aline_path, method: :get do |f| %>
+  <%= f.select :aline, options_for_select([["投稿が新しい順","new"],["投稿が古い順","old"],["評価が高い順","like"],["評価が低い順","dislike"]]) %>
+  <%= f.submit "並べ替え" %>
+<% end %>
