@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   end
 
   resources :books do
+    member do
+    get :tag_index
+    end
     resource :favorites, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]
   end

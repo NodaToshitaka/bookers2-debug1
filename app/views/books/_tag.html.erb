@@ -1,0 +1,8 @@
+ <tr>
+    <td>Tags:</td>
+    <% book.tags.each do |tag| %>
+      <td>
+        <%=link_to tag.tag_name, tag_index_book_path(tag) %>
+      </td>
+    <% end %>
+  </tr>
