@@ -7,7 +7,13 @@ class BooksController < ApplicationController
 
   def index
     @book = Book.new
-    @books = Book.all
+    @books = Book.all.order(created_at: :DESC)
+  end
+
+  def tag_index
+    @book = Book.new
+    tag = Tag.find(params[:id])
+    @books = tag.books.order(created_at: :DESC)
   end
 
   def create
