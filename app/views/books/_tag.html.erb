@@ -2,7 +2,7 @@
     <td>Tags:</td>
     <% book.tags.each do |tag| %>
       <td>
-        <%=link_to tag.tag_name, tag_index_book_path(tag) %>
+        <%=link_to tag.tag_name, search_path(word: tag.tag_name, range: "Tag", search: "perfect_match") %>
       </td>
     <% end %>
   </tr>
