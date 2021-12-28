@@ -11,15 +11,20 @@
     <%= f.label :tag_name %>
     <%= f.text_field :tag_name, placeholder:",で区切ってください" %>
   </div>
+  <% if book.id ===nil %>
   <div class="form-group" id="star">
     <label>評価：</label>
     <%= f.hidden_field :rate, id: :review_star %>
   </div>
+  <% else %>
+  <td>
+    <%= render 'books/star', book: book %>
+  </td>
+  <% end %>
   <div class="form-group">
     <%= f.submit class: 'btn btn-success' %>
   </div>
 <% end %>
-
 <script>
   $('#star').raty({
     size     : 36,
