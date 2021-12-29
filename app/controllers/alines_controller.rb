@@ -4,4 +4,5 @@ class AlinesController < ApplicationController
     selection = params[:aline]
     @books = Book.sort(selection)
   end
+
 end
