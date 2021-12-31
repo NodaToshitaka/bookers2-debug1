@@ -1,0 +1,39 @@
+ <h2>投稿数の前日比・前週比</h2>
+  <table border="1" class="table">
+    <tr>
+      <th class="col-4">今日の投稿数</th>
+      <th class="col-4">前日の投稿数</th>
+      <th class="col-3">前日比</th>
+    </tr>
+    <tr>
+      <td><%= books.created_today.count %></td>
+      <td><%= books.created_yesterday.count %></td>
+      <td>
+        <% @the_day_before = books.created_today.count / books.created_yesterday.count.to_f %>
+        <% if books.created_today.count == 0 || books.created_yesterday.count == 0 %>
+          前日比はありません
+        <% else %>
+          <%= (@the_day_before * 100).round %>%
+        <% end %>
+      </td>
+    </tr>
+  </table>
+  <table border="1" class="table">
+    <tr>
+      <th class="col-4">今週の投稿数</th>
+      <th class="col-4">先週の投稿数</th>
+      <th class="col-3">前週比</th>
+    </tr>
+    <tr>
+      <td><%= books.created_thisweek.count %></td>
+      <td><%= books.created_lastweek.count %></td>
+      <td>
+        <% @the_week_befor = books.created_thisweek.count / books.created_lastweek.count.to_f %>
+        <% if books.created_thisweek.count == 0 || books.created_lastweek.count == 0 %>
+          前週比はありません
+        <% else %>
+          <%= (@the_week_befor * 100).round %>%
+        <% end %>
+      </td>
+    </tr>
+  </table>
