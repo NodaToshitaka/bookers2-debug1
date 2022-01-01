@@ -12,6 +12,8 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+    - if content_for?(:body_attributes)
+       = yield(:body_attributes)
     <%= render 'layouts/header' %>
       <main>
         <% if user_signed_in? %>

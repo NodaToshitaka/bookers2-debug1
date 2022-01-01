@@ -1,0 +1,21 @@
+<h2>7日間分の投稿数</h2>
+<table class="table table-bordered col">
+  <tr>
+    <th>６日前</th>
+    <th>５日前</th>
+    <th>４日前</th>
+    <th>３日前</th>
+    <th>２日前</th>
+    <th>１日前</th>
+    <th>今日</th>
+  </tr>
+  <tr>
+    <td><%= books.where(created_at: 6.day.ago.all_day).count %></td>
+    <td><%= books.where(created_at: 5.day.ago.all_day).count %></td>
+    <td><%= books.where(created_at: 4.day.ago.all_day).count %></td>
+    <td><%= books.where(created_at: 3.day.ago.all_day).count %></td>
+    <td><%= books.where(created_at: 2.day.ago.all_day).count %></td>
+    <td><%= books.where(created_at: 1.day.ago.all_day).count %></td>
+    <td><%= books.where(created_at: Time.zone.now.all_day).count %></td>
+  </tr>
+</table>
