@@ -10,7 +10,18 @@
       <h2>Books</h2>
       <%= render 'books/index',books: @books %>
       <%= render 'users/post_count', books: @books %>
+      <%= render 'users/weekry_post_count', books: @books %>
       <%= render 'users/graph', books: @books %>
+      <%= form_with url: search_user_path(@user), class: "mt-3", method: :get do |f| %>
+        <%= f.date_field :created_at %>
+        <%= f.submit "検索", class: 'btn btn-primary' %>
+      <% end %>
+
+      <div id="search_result">
+        <% if @search_book.present? %>
+          <% render 'users/serch', search_book %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

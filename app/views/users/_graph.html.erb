@@ -2,6 +2,7 @@
 <canvas id="weekry_post"></canvas>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 <script>
+$(document).on('turbolinks:load', function() {
   let ctx = document.getElementById("weekry_post");
   let weekry_post = new Chart(ctx, {
     type: 'line',
@@ -44,4 +45,5 @@
       },
     }
   });
+});
 </script>

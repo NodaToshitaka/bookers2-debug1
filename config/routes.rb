@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'aline' => 'alines#aline'
   resources :users,only: [:show,:index,:edit,:update] do
     member do
+    get :search
     get :follows, :followers
     end
     resource :relationships, only: [:create, :destroy]
